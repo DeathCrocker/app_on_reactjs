@@ -32,6 +32,7 @@ export default class Todo extends React.Component{
         const {idin} = this.props;
         returnpage(false);
         idin(0);
+        todosh = []
     }
 
 
