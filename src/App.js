@@ -1,8 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
-import Login from './login';
-import React from 'react';
-import Todo from './todo'
+import "./App.css";
+import Login from "./login";
+import React from "react";
+import Todo from "./todo";
 
 class App extends React.Component {
   state = {
@@ -11,21 +10,31 @@ class App extends React.Component {
   };
 
   handleLoginClick = (param) => {
-    this.setState({isLoggedIn: param})
-  }
+    this.setState({ isLoggedIn: param });
+  };
 
-  idstatus = (param) => {
-    this.setState({id: param})
-  }
+  userId = (param) => {
+    this.setState({ id: param });
+  };
 
-  render(){
-  return <div className = 'App'>
-  {this.state.isLoggedIn? <Todo returnpage = {this.handleLoginClick} useridin = {this.state.id} idin = {this.idstatus}/>:
-   <Login handleLoginClick = {this.handleLoginClick} idout = {this.idstatus}/>}
-    </div>
-  
-}
+  render() {
+    return (
+      <div className="App">
+        {this.state.isLoggedIn ? (
+          <Todo
+            returnpage={this.handleLoginClick}
+            useridin={this.state.id}
+            userid={this.userId}
+          />
+        ) : (
+          <Login
+            handleLoginClick={this.handleLoginClick}
+            userid={this.userId}
+          />
+        )}
+      </div>
+    );
+  }
 }
 
 export default App;
-

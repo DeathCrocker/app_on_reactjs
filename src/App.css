@@ -41,12 +41,12 @@
   text-align: center;
   font-size: larger;
 }
-.maintodo{
+.maintodo {
   background-color: lightblue;
   margin-left: 30%;
   margin-right: 30%;
 }
-.widget{
+.widget {
   margin-left: auto;
   margin-right: auto;
   list-style: none;
@@ -61,34 +61,33 @@
   margin-right: auto;
   position: relative;
   margin-bottom: 0.3em;
-  border: 3px solid #CADFCF;
+  border: 3px solid #cadfcf;
   padding: 0.6em;
   border-radius: 4px;
-  background: #FEFEFE;
-  color: #231F20;
+  background: #fefefe;
+  color: #231f20;
   font-family: "Trebuchet MS", "Lucida Sans";
   width: 80%;
 }
 
-.input{
+.input {
   margin-left: 3%;
 }
 
-.button{
-  background:rgba(61, 199, 187, 0.418);
+.button {
+  background: rgba(61, 199, 187, 0.418);
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 3%;
 }
 
-
 .crossed-line {
   text-decoration: line-through;
 }
 
-.true{
-  background-color: rgb(0, 255, 106);
+.successtrue {
+  visibility: hidden;
 }
-.false{
-  background-color: rgb(255, 0, 0);
+.successfalse {
+  color: rgb(255, 0, 0);
 }

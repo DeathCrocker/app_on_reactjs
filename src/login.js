@@ -1,84 +1,95 @@
+import React from "react";
+import "./login.css";
+import "./App.css";
 
-import React from 'react';
-import './login.css';
-import './App.css'
+const url = "https://jsonplaceholder.typicode.com/users";
 
+export default class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { username: "" };
+    this.state = { password: "" };
+    this.state = { isloginsuccsess: true };
+    this.handleChangeUsername = this.handleChangeUsername.bind(this);
+    this.handleChangePassword = this.handleChangePassword.bind(this);
+  }
 
-const url = 'https://jsonplaceholder.typicode.com/users';
+  state = {
+    users: [],
+  };
 
-export default class Login extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {value: ''}
-        this.state = {valuepas: ''}
-        this.handleChangelog = this.handleChangelog.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-    };
+  componentDidMount = async () => {
+    const usersfrom = await fetch(url);
+    let users = await usersfrom.json();
+    this.setState({
+      users,
+    });
+  };
 
-    state = {
-        usersout: [],
-        
+  handleChangeUsername(event) {
+    this.setState({ username: event.target.value });
+  }
+  handleChangePassword(event) {
+    this.setState({ password: event.target.value });
+  }
 
-    };
-    
-    
-   
+  errorSuccess = (state, props) => {
+    this.setState({
+      isloginsuccsess: false,
+    });
+  };
 
-    componentDidMount = async() => {
-        const users = await fetch(url)
-        let usersout = await users.json()
-        this.setState({
-            usersout
+  isLoginSuccessful = (props, state) => {
+    const { handleLoginClick } = this.props;
+    const { userid } = this.props;
+    let succes = false;
 
-        });
-    };
-    
-
-    handleChangelog(event) {
-        this.setState({value: event.target.value});
+    for (let i = 0; i < this.state.users.length; i++) {
+      if (
+        this.state.username == this.state.users[i].username &&
+        this.state.password == this.state.users[i].website
+      ) {
+        handleLoginClick(true);
+        let id = this.state.users[i].id;
+        userid(id);
+        succes = true;
       }
-    handleChange(event) {
-        this.setState({valuepas: event.target.value});
-      }
-      
-    
-
-
-    loginsuc = (props) =>{
-        
-        const {handleLoginClick} = this.props;
-        const {idout} = this.props;
-        let suc = false;
-        for(let i=0;i<this.state.usersout.length;i++){
-            if(this.state.value == this.state.usersout[i].username &&
-                 this.state.valuepas == this.state.usersout[i].website){
-                handleLoginClick(true);
-                let id  =this.state.usersout[i].id;
-                idout(id);
-                suc = true;
-                
-                
-            } 
-        };
-        if(suc == false){alert('Неправильный логин или пароль')}
-        
-    };
-    
-
-    render() {
-        
-        
-        
-
-        return(
-            <>
-            <div className = 'login'><h1>Login</h1></div>
-            <input type = 'text' value={this.state.value} onChange={this.handleChangelog} ></input>
-            <div className = 'login'><h1>Password</h1></div>
-            <input type = 'password' value={this.state.valuepas} onChange={this.handleChange}></input>
-            <div><button onClick = {this.loginsuc}>Войти</button></div></>
-        );
-
     }
-}
+    if (succes == false) {
+      this.errorSuccess();
+    }
+  };
 
+  render() {
+    return (
+      <>
+        <div className="login">
+          <h1>Login</h1>
+        </div>
+        <input
+          type="text"
+          value={this.state.username}
+          onChange={this.handleChangeUsername}
+        ></input>
+        <div className="login">
+          <h1>Password</h1>
+        </div>
+        <input
+          type="password"
+          value={this.state.password}
+          onChange={this.handleChangePassword}
+        ></input>
+        <div>
+          <button onClick={this.isLoginSuccessful}>Войти</button>
+        </div>
+        <div
+          className={
+            this.state.isloginsuccsess ? "successtrue" : "successfalse"
+          }
+        >
+          Неправильный логин или пароль
+        </div>
+      </>
+    );
+  }
+}
