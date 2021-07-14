@@ -40,7 +40,7 @@ export default class Todo extends React.Component {
         completed: false,
         icon: <DeleteIcon />,
       });
-      console.log(todoTasks);
+
       this.setState({
         todoTasks,
         newtodo: "",
@@ -58,7 +58,6 @@ export default class Todo extends React.Component {
     const url = "https://jsonplaceholder.typicode.com/todos?userId=" + useridin;
     const todosfrom = await fetch(url);
     let todosAll = await todosfrom.json();
-    console.log(todosAll);
 
     this.setState({
       todosAll,
@@ -87,7 +86,7 @@ export default class Todo extends React.Component {
   };
 
   deleteTodo = (index) => {
-    delete todoTasks[index];
+    todoTasks.splice(index, 1);
     this.setState({
       todoTasks,
     });
