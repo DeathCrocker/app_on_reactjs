@@ -85,6 +85,13 @@ export default class Todo extends React.Component {
     });
   };
 
+  changeCompleted = (index, state) => {
+    todoTasks[index].completed = !todoTasks[index].completed;
+    this.setState({
+      todoTasks,
+    });
+  };
+
   deleteTodo = (index) => {
     todoTasks.splice(index, 1);
     this.setState({
@@ -132,7 +139,10 @@ export default class Todo extends React.Component {
           </div>
           <List className="widget">
             {todoTasks.map((todoTasks, index) => (
-              <ListItem classname="widget li">
+              <ListItem
+                classname="widget li"
+                onClick={() => this.changeCompleted(index)}
+              >
                 <ListItemText>{todoTasks.text}</ListItemText>
                 <ListItemIcon>
                   {this.state.todoTasks[index].completed ? (
