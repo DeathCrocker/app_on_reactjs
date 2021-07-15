@@ -63,31 +63,33 @@ export default class Login extends React.Component {
   render() {
     return (
       <>
-        <div className="login">
-          <h1>Login</h1>
-        </div>
-        <input
-          type="text"
-          value={this.state.username}
-          onChange={this.handleChangeUsername}
-        ></input>
-        <div className="login">
-          <h1>Password</h1>
-        </div>
-        <input
-          type="password"
-          value={this.state.password}
-          onChange={this.handleChangePassword}
-        ></input>
-        <div>
-          <button onClick={this.isLoginSuccessful}>Войти</button>
-        </div>
-        <div
-          className={
-            this.state.isloginsuccsess ? "successtrue" : "successfalse"
-          }
-        >
-          Неправильный логин или пароль
+        <div className="loginform">
+          <div className="login">
+            <h1>Login</h1>
+          </div>
+          <input
+            type="text"
+            value={this.state.username}
+            onChange={this.handleChangeUsername}
+          ></input>
+          <div className="login">
+            <h1>Password</h1>
+          </div>
+          <input
+            type="password"
+            value={this.state.password}
+            onChange={this.handleChangePassword}
+          ></input>
+          <div>
+            <button onClick={this.isLoginSuccessful}>Continue</button>
+          </div>
+          <div
+            className={
+              this.state.isloginsuccsess ? "successtrue" : "successfalse"
+            }
+          >
+            Неправильный логин или пароль
+          </div>
         </div>
       </>
     );
