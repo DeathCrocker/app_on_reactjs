@@ -94,7 +94,7 @@
 
 .loginform {
   display: inline-block;
-  background-color: rgba(0, 47, 255, 0.753);
+  background-color: rgba(0, 47, 255, 0.219);
   margin: auto;
   position: absolute;
   top: 47%;
@@ -103,8 +103,18 @@
   margin-left: -12em;
   width: 25em;
   height: 20em;
-  border: 4mm ridge rgba(255, 0, 0, 0.6);
+  border: 4mm ridge gold;
+  box-shadow: 0 -200px 100px -120px rgb(11, 35, 145) inset;
+  animation: border linear 8s infinite;
 }
+
+@keyframes border {
+  50% {
+    background: skyblue;
+    box-shadow: 0 -200px 100px -100px yellowgreen inset;
+  }
+}
+
 .loginform h1 {
   font-family: Harrington;
 }
