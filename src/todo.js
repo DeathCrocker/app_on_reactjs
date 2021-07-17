@@ -7,6 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import CancelIcon from "@material-ui/icons/Cancel";
 import CheckIcon from "@material-ui/icons/Check";
+import backimage from "./Images/image1.jpg";
 
 let todoTasks = [];
 
@@ -117,51 +118,58 @@ export default class Todo extends React.Component {
         onClick: this.returnPagefun,
       },
     ];
-
+    var sectionStyle = {
+      width: "100%",
+      height: "2400px",
+      backgroundSize: "cover",
+      backgroundImage: `url(${backimage})`,
+    };
     return (
       <>
-        <div className="maintodo">
-          <div>
-            <h1>TODO</h1>
-          </div>
-          <input
-            type="text"
-            value={this.state.newtodo}
-            onChange={this.handleChangeInput}
-            className="input"
-          ></input>
-          <div>
-            {buttonArray.map((button) => (
-              <button className="button" onClick={button.onClick}>
-                {button.text}
-              </button>
-            ))}
-          </div>
-          <List className="widget">
-            {todoTasks.map((todoTasks, index) => (
-              <ListItem
-                classname="widget li"
-                onClick={() => this.changeCompleted(index)}
-              >
-                <ListItemText>{todoTasks.text}</ListItemText>
-                <ListItemIcon>
-                  {this.state.todoTasks[index].completed ? (
-                    <CheckIcon />
-                  ) : (
-                    <CancelIcon />
-                  )}
-                </ListItemIcon>
-                <IconButton
-                  onClick={() => {
-                    this.deleteTodo(index);
-                  }}
+        <section style={sectionStyle}>
+          <div className="maintodo">
+            <div>
+              <h1>TODO</h1>
+            </div>
+            <input
+              type="text"
+              value={this.state.newtodo}
+              onChange={this.handleChangeInput}
+              className="input"
+            ></input>
+            <div>
+              {buttonArray.map((button) => (
+                <button className="button" onClick={button.onClick}>
+                  {button.text}
+                </button>
+              ))}
+            </div>
+            <List className="widget">
+              {todoTasks.map((todoTasks, index) => (
+                <ListItem
+                  classname="widget li"
+                  onClick={() => this.changeCompleted(index)}
                 >
-                  {todoTasks.icon}
-                </IconButton>
-              </ListItem>
-            ))}
-          </List>
-        </div>
+                  <ListItemText>{todoTasks.text}</ListItemText>
+                  <ListItemIcon>
+                    {this.state.todoTasks[index].completed ? (
+                      <CheckIcon />
+                    ) : (
+                      <CancelIcon />
+                    )}
+                  </ListItemIcon>
+                  <IconButton
+                    onClick={() => {
+                      this.deleteTodo(index);
+                    }}
+                  >
+                    {todoTasks.icon}
+                  </IconButton>
+                </ListItem>
+              ))}
+            </List>
+          </div>
+        </section>
       </>
     );
   }

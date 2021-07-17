@@ -1,6 +1,7 @@
 import React from "react";
 import "./login.css";
 import "./App.css";
+import backimage from "./Images/image2.jpg";
 
 const url = "https://jsonplaceholder.typicode.com/users";
 
@@ -61,36 +62,40 @@ export default class Login extends React.Component {
   };
 
   render() {
+    var sectionStyle = {
+      width: "100%",
+      height: "1000px",
+      backgroundSize: "cover",
+      backgroundImage: `url(${backimage})`,
+    };
     return (
       <>
-        <div className="loginform">
-          <div className="login">
+        <section style={sectionStyle}>
+          <div className="loginform">
             <h1>Login</h1>
-          </div>
-          <input
-            type="text"
-            value={this.state.username}
-            onChange={this.handleChangeUsername}
-          ></input>
-          <div className="login">
+            <input
+              type="text"
+              value={this.state.username}
+              onChange={this.handleChangeUsername}
+            ></input>
             <h1>Password</h1>
+            <input
+              type="password"
+              value={this.state.password}
+              onChange={this.handleChangePassword}
+            ></input>
+            <div>
+              <button onClick={this.isLoginSuccessful}>Continue</button>
+            </div>
+            <div
+              className={
+                this.state.isloginsuccsess ? "successtrue" : "successfalse"
+              }
+            >
+              Неправильный логин или пароль
+            </div>
           </div>
-          <input
-            type="password"
-            value={this.state.password}
-            onChange={this.handleChangePassword}
-          ></input>
-          <div>
-            <button onClick={this.isLoginSuccessful}>Continue</button>
-          </div>
-          <div
-            className={
-              this.state.isloginsuccsess ? "successtrue" : "successfalse"
-            }
-          >
-            Неправильный логин или пароль
-          </div>
-        </div>
+        </section>
       </>
     );
   }

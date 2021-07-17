@@ -42,17 +42,20 @@
   font-size: larger;
 }
 .maintodo {
-  background-color: lightblue;
+  background-color: rgb(64, 170, 212);
   margin-left: 30%;
   margin-right: 30%;
+  border: 0.4em ridge rgba(29, 84, 129, 0.404);
+}
+.maintodo h1 {
+  font-family: Harrington;
 }
 .widget {
   margin-left: auto;
   margin-right: auto;
   list-style: none;
   counter-reset: li;
-
-  background-color: rgba(61, 199, 187, 0.418);
+  background-color: rgba(27, 182, 169, 0.418);
   background-size: cover;
 }
 
@@ -103,26 +106,29 @@
   margin-left: -12em;
   width: 25em;
   height: 20em;
-  border: 4mm ridge gold;
-  box-shadow: 0 -200px 100px -120px rgb(11, 35, 145) inset;
-  animation: border linear 8s infinite;
+  border: 4mm ridge rgba(100, 13, 112, 0.651);
+  box-shadow: 0 -200px 100px -120px rgb(48, 22, 161) inset;
+  animation: border linear 6s infinite;
 }
 
 @keyframes border {
   50% {
-    background: skyblue;
-    box-shadow: 0 -200px 100px -100px yellowgreen inset;
+    background: rgb(152, 44, 167);
+    box-shadow: 0 -200px 100px -100px rgb(108, 47, 179) inset;
   }
 }
 
 .loginform h1 {
   font-family: Harrington;
+  color: rgb(231, 231, 231);
+  font-size: 30px;
+  text-shadow: 3px 5px 6px rgb(0, 0, 0);
 }
 .loginform button {
-  background-color: #bbc74f;
+  background-color: #dfd441;
   border: none;
-  color: white;
-  font-size: 10em;
+  color: rgb(0, 0, 0);
+  font-size: 0.6em;
   padding: 14px 40px;
   border-radius: 12px;
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
@@ -130,6 +136,10 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 10px;
   margin-top: 10px;
+}
+
+.loginform input {
+  border: 0.3em ridge rgb(150, 48, 96);
+  border-radius: 12px;
 }
